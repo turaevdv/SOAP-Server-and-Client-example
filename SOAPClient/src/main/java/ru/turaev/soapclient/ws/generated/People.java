@@ -8,6 +8,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
@@ -22,7 +23,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence&gt;
  *         &lt;element name="children" type="{http://services.ws.sample/}people" maxOccurs="unbounded" minOccurs="0"/&gt;
  *         &lt;element name="countOfCars" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
- *         &lt;element name="dateOfBirth" type="{http://services.ws.sample/}localDate" minOccurs="0"/&gt;
+ *         &lt;element name="dateOfBirth" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
  *         &lt;element name="gender" type="{http://services.ws.sample/}gender" minOccurs="0"/&gt;
  *         &lt;element name="hasWork" type="{http://www.w3.org/2001/XMLSchema}boolean"/&gt;
  *         &lt;element name="height" type="{http://www.w3.org/2001/XMLSchema}double"/&gt;
@@ -52,7 +53,8 @@ public class People {
     @XmlElement(nillable = true)
     protected List<People> children;
     protected int countOfCars;
-    protected LocalDate dateOfBirth;
+    @XmlSchemaType(name = "dateTime")
+    protected XMLGregorianCalendar dateOfBirth;
     @XmlSchemaType(name = "string")
     protected Gender gender;
     protected boolean hasWork;
@@ -110,10 +112,10 @@ public class People {
      * 
      * @return
      *     possible object is
-     *     {@link LocalDate }
+     *     {@link XMLGregorianCalendar }
      *     
      */
-    public LocalDate getDateOfBirth() {
+    public XMLGregorianCalendar getDateOfBirth() {
         return dateOfBirth;
     }
 
@@ -122,10 +124,10 @@ public class People {
      * 
      * @param value
      *     allowed object is
-     *     {@link LocalDate }
+     *     {@link XMLGregorianCalendar }
      *     
      */
-    public void setDateOfBirth(LocalDate value) {
+    public void setDateOfBirth(XMLGregorianCalendar value) {
         this.dateOfBirth = value;
     }
 
